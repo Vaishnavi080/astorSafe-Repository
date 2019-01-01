@@ -65,20 +65,25 @@ WebUI.click(findTestObject('YardMaster Objects/YardMaster2/AddYardPopup/Page_ast
 
 WebUI.delay(3)
 
-not_run: WebUI.click(findTestObject('YardMaster Objects/YardMaster2/FileUpload/Page_astorSafe System/BrowseFileButton'))
-
 WebUI.uploadFile(findTestObject('YardMaster Objects/YardMaster2/FileUpload/Page_astorSafe System/BrowseFileButton'), 'C:\\\\Users\\\\Astoria\\\\Desktop\\\\Zyard.png')
 
-WebUI.delay(60)
+WebUI.delay(30)
 
 WebUI.click(findTestObject('YardMaster Objects/YardMaster2/AddYardPopup/Page_astorSafe System/SaveButton'))
 
-WebUI.delay(5)
+WebUI.delay(10)
+
+WebUI.waitForElementNotClickable(findTestObject('YardMaster Objects/YardMaster2/SuccessMessages/Page_astorSafe System/SuccessMeassage-Yard created successfully'), 
+    10)
 
 String ActualSuccessMsg = WebUI.getText(findTestObject('YardMaster Objects/YardMaster2/SuccessMessages/Page_astorSafe System/SuccessMeassage-Yard created successfully'))
+
 WebUI.delay(5)
+
 System.out.println(ActualSuccessMsg)
+
 WebUI.delay(5)
+
 if (ActualSuccessMsg == ExpectedSuccessMsg) {
     System.out.println('Adding New Yard Testcase is Passed')
 } else {
